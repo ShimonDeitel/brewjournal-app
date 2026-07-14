@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct Brewlog-CoffeeJournalApp: App {
+struct BrewlogCoffeeJournalApp: App {
     @StateObject private var store = Store()
     @StateObject private var purchaseManager = PurchaseManager()
 

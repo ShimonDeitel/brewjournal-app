@@ -55,7 +55,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showAddSheet) {
                 if let item = editingItem {
-                    EditorSheet(item: item, isNew: true)
+                    EditorSheet(draft: item, isNew: true)
                 }
             }
             .sheet(isPresented: Binding(
@@ -63,7 +63,7 @@ struct ContentView: View {
                 set: { newValue in if !newValue { editingItem = nil } }
             )) {
                 if let item = editingItem {
-                    EditorSheet(item: item, isNew: false)
+                    EditorSheet(draft: item, isNew: false)
                 }
             }
             .sheet(isPresented: $showPaywall) {
