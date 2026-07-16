@@ -31,7 +31,8 @@ jobs:
         run: |
           PROJ=$(grep -m1 '^name:' project.yml | sed 's/^name:[[:space:]]*//')
           echo "APP_NAME=$PROJ" >> "$GITHUB_ENV"
-          echo "SCHEME=$PROJ" >> "$GITHUB_ENV"
+          SCHEME_NAME=$(xcodebuild -list -project "$PROJ.xcodeproj" | awk '/Schemes:/{flag=1; next} flag && NF{print $1; exit}')
+          echo "SCHEME=$SCHEME_NAME" >> "$GITHUB_ENV"
 
       - name: Pick simulator device
         id: sim
